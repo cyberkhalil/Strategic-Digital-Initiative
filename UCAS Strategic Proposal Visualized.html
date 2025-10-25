@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="doc-title-main">Strategic Digital Initiative: Enhancing the UCAS E-Portal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Noto+Sans+Arabic:wght@100..900&display=swap" rel="stylesheet">
+    <style>
+        /* Custom Styles for UCAS theme - Using colors from the logo */
+        :root {
+            --color-primary: #0076c4; /* Deep Blue from UCAS logo */
+            --color-accent: #66b933;  /* Bright Green from UCAS logo */
+            --color-bg: #f4f7f9;
+        }
+        body {
+            /* Use Noto Sans Arabic for RTL and Inter for LTR */
+            font-family: 'Inter', 'Noto Sans Arabic', sans-serif;
+            background-color: var(--color-bg);
+            color: #333333;
+            transition: all 0.3s ease;
+        }
+        
+        /* Base styles for headings - adjusted dynamically by JS */
+        .main-heading {
+            border-bottom: 4px solid var(--color-accent);
+            padding-bottom: 0.5rem;
+            font-size: 2.25rem; /* 3xl */
+            font-weight: 700; /* Bold */
+            color: var(--color-primary);
+        }
+        .sub-heading {
+            color: var(--color-primary);
+            padding-inline-start: 0.75rem; 
+            font-weight: 600;
+        }
+        
+        /* Custom list style - adjusted dynamically by JS */
+        .custom-list li::before {
+            content: "\25CF"; /* Filled circle bullet */
+            color: var(--color-accent);
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-inline-start: 0.25em;
+        }
+
+        /* LTR Specific Styles (Default) */
+        .ltr-styles .sub-heading {
+            border-left: 4px solid var(--color-accent);
+            border-right: none;
+        }
+        .ltr-styles .custom-list li::before {
+            margin-right: 0.25em;
+        }
+
+        /* RTL Specific Styles (Activated by JS) */
+        .rtl-styles .sub-heading {
+            border-right: 4px solid var(--color-accent);
+            border-left: none;
+            padding-left: 0;
+            padding-right: 0.75rem;
+        }
+        .rtl-styles .custom-list li::before {
+            margin-left: 0;
+            margin-right: 0.25em;
+        }
+    </style>
+</head>
+<body class="p-4 sm:p-8">
+
+    <div class="max-w-6xl mx-auto bg-white shadow-2xl rounded-xl overflow-hidden">
+        
+        <!-- Header Section -->
+        <header class="bg-[var(--color-primary)] text-white p-6 sm:p-10 text-center rounded-t-xl relative">
+            
+            <!-- Language Toggle Button -->
+            <button id="lang-toggle-btn" onclick="switchLanguage()" 
+                    class="absolute top-4 right-4 bg-[var(--color-accent)] hover:bg-green-700 text-white font-semibold py-2 px-4 rounded-lg text-sm shadow-md transition duration-300">
+                Switch to Arabic
+            </button>
+
+            <div class="flex items-center justify-center mb-4">
+                <!-- Placeholder for UCAS Logo -->
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-white mr-2" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2L1 21h22L12 2zm0 3.93L18.84 19H5.16L12 5.93zM12 11a1 1 0 100 2 1 1 0 000-2z"/>
+                </svg>
+                <h1 class="text-3xl sm:text-4xl font-extrabold tracking-tight" data-key="docTitle">Strategic Digital Initiative</h1>
+            </div>
+            <p class="text-xl sm:text-2xl font-light" data-key="docSubtitle">Enhancing the University College of Applied Sciences (UCAS) E-Portal to Support International Partnerships</p>
+        </header>
+
+        <!-- Metadata Section -->
+        <div class="p-6 sm:p-8 border-b border-gray-100">
+            <h2 class="text-xl font-semibold mb-4 text-[var(--color-primary)]" data-key="docDetails">Document Details</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
+                <!-- Row 1: Document Title -->
+                <div class="md:col-span-3 flex justify-between items-center p-3 bg-gray-50 rounded-lg">
+                    <span class="font-medium text-gray-600" data-key="docTitleLabel">Document Title:</span>
+                    <span class="font-bold text-left text-[var(--color-primary)]" data-key="docTitleFull">UCAS English Website Improvement Project Proposal</span>
+                </div>
+                <!-- Row 2: Date & ID -->
+                <div class="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
+                    <span class="font-medium text-gray-600" data-key="date">Date:</span>
+                    <span class="font-bold text-left" data-key="dateValue">October 2025</span>
+                </div>
+                <div class="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
+                    <span class="font-medium text-gray-600" data-key="projectID">Project ID:</span>
+                    <span class="font-bold text-left">UCAS-WEB-EN-2025-01</span>
+                </div>
+                <div class="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
+                    <span class="font-medium text-gray-600" data-key="preparingEntity">Preparing Entity:</span>
+                    <span class="font-bold text-left text-[var(--color-primary)]" data-key="entityValue">Deanship of Engineering and Smart Systems</span>
+                </div>
+
+                <!-- Row 3: Authorship and Supervision -->
+                <div class="md:col-span-2 flex justify-between items-center p-3 bg-green-50 rounded-lg border border-[var(--color-accent)]/50">
+                    <span class="font-medium text-gray-600" data-key="assignedEngineer">Assigned Engineer (Preparation & Technical Management):</span>
+                    <span class="font-bold text-left text-gray-800" data-key="engineerName">Eng. Mahmoud Khalil / م.محمود الشيخ خليل</span>
+                </div>
+                <div class="flex justify-between items-center p-3 bg-green-50 rounded-lg border border-[var(--color-accent)]/50">
+                    <span class="font-medium text-gray-600" data-key="supervision">Supervision:</span>
+                    <span class="font-bold text-left text-gray-800" data-key="supervisorName">Dr. Mohammed Mattar / د.محمد مطر</span>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Main Content Sections -->
+        <main class="p-6 sm:p-10 space-y-12">
+
+            <!-- 1. Executive Summary -->
+            <section>
+                <h2 class="main-heading" data-key="section1Title">1. Executive Summary</h2>
+                <div class="mt-6 p-4 border border-[var(--color-accent)]/50 rounded-xl bg-[var(--color-accent)]/10">
+                    <h3 class="sub-heading text-lg font-bold" data-key="section11Title">1.1. Project Overview</h3>
+                    <p class="text-gray-700 mt-3 leading-relaxed" data-key="section11Text">
+                        This proposal represents a crucial strategic investment to support the University College of Applied Sciences (UCAS)'s position as an "Innovation Leader." It directly aims to enhance **International and Institutional Partnerships (Academic & Research Partnerships)** by updating and developing our English electronic platform (<a href="en.ucas.edu.ps" class="text-[var(--color-primary)] hover:underline">en.ucas.edu.ps</a>). The project will standardize the User Experience (UX/UI) across 11 main sections, ranging from Academic Deanships to Research Centers, achieving maximum **professionalism** and **high technical quality** to serve the international cooperation agenda. Leveraging the internal efficiency of the Deanship of Engineering and Smart Systems, this project is expected to be fully completed within an **accelerated timeframe of only 14 days**.
+                    </p>
+                </div>
+            </section>
+
+            <!-- 2. Problem Statement and Challenge -->
+            <section>
+                <h2 class="main-heading" data-key="section2Title">2. Problem Statement and Challenge</h2>
+                <p class="mt-6 text-gray-700" data-key="section2Intro">Despite our academic distinction, our current English interface poses a risk to our ability to attract international partners and presents a challenge to joint collaboration:</p>
+                <ul class="mt-4 space-y-3 custom-list list-none pl-0">
+                    <li class="p-2 rounded-lg bg-red-50/70 border border-red-100">
+                        <span class="font-bold text-[var(--color-primary)]" data-key="problem1">Weak Global Institutional Appearance:</span> The current design does not reflect UCAS's standing as a credible international academic or research partner, hindering the building of relationships with other universities.
+                    </li>
+                    <li class="p-2 rounded-lg bg-red-50/70 border border-red-100">
+                        <span class="font-bold text-[var(--color-primary)]" data-key="problem2">Inconsistent User Experience:</span> There is a disparity in formatting and content across the 11 sections, making it difficult for international academics and institutions to quickly access details of our research programs and academic plans.
+                    </li>
+                    <li class="p-2 rounded-lg bg-red-50/70 border border-red-100">
+                        <span class="font-bold text-[var(--color-primary)]" data-key="problem3">Lack of Clarity in Competency Display:</span> Academic staff profiles and expertise are not displayed professionally, which would otherwise facilitate cooperation opportunities and leverage their expertise for other universities.
+                    </li>
+                </ul>
+            </section>
+
+            <!-- 3. Project Scope -->
+            <section>
+                <h2 class="main-heading" data-key="section3Title">3. Project Scope: The Eleven Target Sections</h2>
+                <p class="mt-6 text-gray-700 mb-4" data-key="section3Intro">The project includes comprehensive redesign and development of 11 main sections of the English website, focusing on serving international relations:</p>
+                <div class="overflow-x-auto rounded-lg shadow-md">
+                    <table class="min-w-full divide-y divide-gray-200">
+                        <thead class="bg-[var(--color-primary)] text-white">
+                            <tr>
+                                <th class="px-4 py-3 text-left text-xs font-medium uppercase tracking-wider" data-key="tableID">ID</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider" data-key="tableSection">Section/Deanship</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider" data-key="tableFocus">Focus Value</th>
+                            </tr>
+                        </thead>
+                        <tbody class="bg-white divide-y divide-gray-200 text-left">
+                            <tr><td class="px-4 py-4 whitespace-nowrap text-sm font-medium">1-7</td><td class="px-6 py-4 whitespace-nowrap text-sm font-bold" data-key="scope1Title">Academic Departments (7 Deanships)</td><td class="px-6 py-4 text-sm text-gray-600" data-key="scope1Value">Clearly outlining program pathways, **academic development plans**, and faculty profiles.</td></tr>
+                            <tr class="bg-gray-50"><td class="px-4 py-4 whitespace-nowrap text-sm font-medium">8</td><td class="px-6 py-4 whitespace-nowrap text-sm font-bold" data-key="scope2Title">Scientific Research</td><td class="px-6 py-4 text-sm text-gray-600" data-key="scope2Value">Showcasing current projects, **areas of joint interest with international partners**, and funding opportunities.</td></tr>
+                            <tr><td class="px-4 py-4 whitespace-nowrap text-sm font-medium">9</td><td class="px-6 py-4 whitespace-nowrap text-sm font-bold" data-key="scope3Title">Units & Centers</td><td class="px-6 py-4 text-sm text-gray-600" data-key="scope3Value">Clarifying the mission of each unit, **its potential for international cooperation**, and contact information.</td></tr>
+                            <tr class="bg-gray-50"><td class="px-4 py-4 whitespace-nowrap text-sm font-medium">10</td><td class="px-6 py-4 whitespace-nowrap text-sm font-bold" data-key="scope4Title">Public Relations</td><td class="px-6 py-4 text-sm text-gray-600" data-key="scope4Value">News archive, events calendar, **and news on established partnerships**.</td></tr>
+                            <tr><td class="px-4 py-4 whitespace-nowrap text-sm font-medium">11</td><td class="px-6 py-4 whitespace-nowrap text-sm font-bold" data-key="scope5Title">Contact Us</td><td class="px-6 py-4 text-sm text-gray-600" data-key="scope5Value">Improved contact forms, department directories, and location maps.</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- 4. Proposed Solution and Strategic Pillars -->
+            <section>
+                <h2 class="main-heading" data-key="section4Title">4. Proposed Solution and Strategic Pillars</h2>
+                <p class="mt-6 text-gray-700" data-key="section4Intro">The project will be executed based on three strategic pillars to ensure a final product that serves institutional goals:</p>
+
+                <!-- 4.1. Pillar One -->
+                <div class="mt-8 p-6 bg-gray-50 rounded-xl shadow">
+                    <h3 class="sub-heading text-xl" data-key="pillar1Title">4.1. Pillar One: Technical Quality and Professionalism (Engineering Excellence) on WordPress Platform</h3>
+                    <p class="mt-3 text-gray-600 font-medium" data-key="pillar1Intro">I guarantee that this pillar will receive the highest priority, focusing on the structural architecture of the WordPress platform:</p>
+                    <ul class="mt-4 space-y-3 custom-list list-none pl-0 text-sm text-gray-700">
+                        <li data-key="pillar1List1"><span class="font-bold">Theme Engineering:</span> Building all modifications and customizations through a **dedicated Child Theme**. This ensures that no code or design changes are lost when the main WordPress theme is updated, guaranteeing long-term site sustainability.</li>
+                        <li data-key="pillar1List2"><span class="font-bold">Future Scalability:</span> Designing the core WordPress architecture to accommodate future content growth (increasing the number of sections or programs) without requiring comprehensive re-engineering.</li>
+                        <li data-key="pillar1List3"><span class="font-bold">Performance and Caching Optimization:</span> Implementing techniques to improve WordPress page loading speed, including asset compression, database query optimization, and activating caching best practices.</li>
+                        <li data-key="pillar1List4"><span class="font-bold">Dynamic Content Structure:</span> Utilizing Custom Post Types (CPTs) and custom fields to organize data for deanships, programs, and staff profiles in an organized and segregated manner.</li>
+                        <li data-key="pillar1List5"><span class="font-bold">Technical Compliance:</span> Building interfaces using the latest programming standards to ensure sustainability and ease of future maintenance.</li>
+                    </ul>
+                </div>
+
+                <!-- 4.2. Pillar Two -->
+                <div class="mt-6 p-6 bg-gray-50 rounded-xl shadow">
+                    <h3 class="sub-heading text-xl" data-key="pillar2Title">4.2. Pillar Two: Design and User Experience (UX/UI Modernization)</h3>
+                    <ul class="mt-4 space-y-3 custom-list list-none pl-0 text-sm text-gray-700">
+                        <li data-key="pillar2List1"><span class="font-bold">Unified and Responsive Design:</span> Adopting a **"Mobile-First" approach** to ensure a seamless experience on all devices.</li>
+                        <li data-key="pillar2List2"><span class="font-bold">Integrated Visual Identity:</span> Unifying fonts, colors, and data presentation style across all 11 sections.</li>
+                        <li data-key="pillar2List3"><span class="font-bold">Accessibility (WCAG Compliance):</span> Ensuring that pages comply with Web Content Accessibility Guidelines to serve users with disabilities.</li>
+                    </ul>
+                </div>
+
+                <!-- 4.3. Pillar Three -->
+                <div class="mt-6 p-6 bg-gray-50 rounded-xl shadow">
+                    <h3 class="sub-heading text-xl" data-key="pillar3Title">4.3. Pillar Three: Strategic Content, Clarity, and Human Capital for International Cooperation</h3>
+                    
+                    <div class="p-4 mt-4 bg-[var(--color-accent)]/10 border-left-4 border-[var(--color-accent)]/50 rounded-lg" id="content-req-box">
+                        <h4 class="font-bold text-base text-[var(--color-primary)]" data-key="reqTitle">4.3.1. Content Completion and Data Acquisition Requirement</h4>
+                        <p class="text-sm text-gray-700 mt-2" data-key="reqText">
+                            A critical requirement for the full completion of this project and populating all necessary pages (11 sections) is **obtaining sufficient and reliable input and content**. Therefore, effective and direct communication with deanships and college specialists to provide detailed information for each page, including goals, programs, and staff profiles, is an essential condition for adhering to the specified timeframe (**14 days**). **To this end, a Standardized Template will be sent to each deanship to populate the required data for its page, with a strict Hard Deadline of no more than 48 hours to ensure work flow continuity and adherence to the 14-day schedule.**
+                        </p>
+                    </div>
+
+                    <ul class="mt-4 space-y-3 custom-list list-none pl-0 text-sm text-gray-700">
+                        <li data-key="pillar3List1"><span class="font-bold">Content Refinement:</span> Reviewing all English texts to ensure accuracy, clarity, and suitability for the audience of **partner universities and research institutions**.</li>
+                        <li data-key="pillar3List2">
+                            <span class="font-bold">Highlighting Human Capital for Cooperation:</span> **Coordinating with deanships to compile profiles of distinguished faculty and staff, including a summary of their research specialization and any previous international experience, to facilitate cooperation and leverage their expertise in developing joint academic plans.**
+                        </li>
+                        <li data-key="pillar3List3"><span class="font-bold">Search Engine Optimization (SEO):</span> Implementing SEO best practices to increase UCAS's visibility in international academic and research search results.</li>
+                    </ul>
+                </div>
+
+            </section>
+
+            <!-- 5. Timeline and Phases -->
+            <section>
+                <h2 class="main-heading" data-key="section5Title">5. Timeline and Phases</h2>
+                <p class="mt-6 text-gray-700 mb-4" data-key="section5Intro">The timeline has been set based on the efficiency of **developing one page per day** to meet strategic goals at maximum speed:</p>
+                <div class="overflow-x-auto rounded-lg shadow-md border border-gray-200">
+                    <table class="min-w-full divide-y divide-gray-200">
+                        <thead class="bg-gray-200 text-gray-800">
+                            <tr>
+                                <th class="px-4 py-3 text-left text-xs font-medium uppercase tracking-wider" data-key="tablePhase">Phase</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider" data-key="tableDescription">Description</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider" data-key="tableDuration">Duration (Days)</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider" data-key="tableDeliverables">Key Deliverables</th>
+                            </tr>
+                        </thead>
+                        <tbody class="bg-white divide-y divide-gray-100 text-sm text-left">
+                            <tr class="hover:bg-green-50/50 transition duration-150"><td class="px-4 py-4 font-bold" data-key="phase1">1. Discovery and Planning</td><td class="px-6 py-4" data-key="phase1Desc">Gathering final requirements, content auditing, and structure design.</td><td class="px-6 py-4 font-bold text-[var(--color-accent)]" data-key="phase1Dur">2 Days</td><td class="px-6 py-4" data-key="phase1Del">Requirements Document, Design Prototypes.</td></tr>
+                            <tr class="bg-gray-50 hover:bg-green-50/50 transition duration-150"><td class="px-4 py-4 font-bold" data-key="phase2">2. Technical Development</td><td class="px-6 py-4" data-key="phase2Desc">**Coding 11 sections (1 page/day)**, followed by quality testing and technical verification.</td><td class="px-6 py-4 font-bold text-[var(--color-accent)]" data-key="phase2Dur">7 Days</td><td class="px-6 py-4" data-key="phase2Del">Ready templates for 11 sections, Initial Technical Verification Report.</td></tr>
+                            <tr class="hover:bg-green-50/50 transition duration-150"><td class="px-4 py-4 font-bold" data-key="phase3">3. Content Migration and QA</td><td class="px-6 py-4" data-key="phase3Desc">Inputting final English content, comprehensive functional testing.</td><td class="px-6 py-4 font-bold text-[var(--color-accent)]" data-key="phase3Dur">3 Days</td><td class="px-6 py-4" data-key="phase3Del">Quality Assurance Report, Technical Audit Report.</td></tr>
+                            <tr class="bg-gray-50 hover:bg-green-50/50 transition duration-150"><td class="px-4 py-4 font-bold" data-key="phase4">4. Launch and Deployment</td><td class="px-6 py-4" data-key="phase4Desc">Final approval, deployment to the production environment, and post-launch monitoring.</td><td class="px-6 py-4 font-bold text-[var(--color-accent)]" data-key="phase4Dur">2 Days</td><td class="px-6 py-4" data-key="phase4Del">Official site launch, Performance Monitoring Report.</td></tr>
+                            <tr class="bg-[var(--color-accent)]/80 text-white font-extrabold"><td class="px-4 py-4" data-key="total">Total</td><td class="px-6 py-4"></td><td class="px-6 py-4" data-key="totalDur">14 Days</td><td class="px-6 py-4" data-key="totalDel">Fully Enhanced en.ucas.edu.ps Platform</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+            
+            <!-- 6. Success Metrics -->
+            <section>
+                <h2 class="main-heading" data-key="section6Title">6. Success Metrics</h2>
+                <p class="mt-6 text-gray-700" data-key="section6Intro">The success of this project will be measured 90 days after launch based on the following metrics:</p>
+                <ul class="mt-4 space-y-3 custom-list list-none pl-0 text-sm text-gray-700">
+                    <li data-key="metric1"><span class="font-bold">Institutional User Engagement:</span> Increase in the Average Session Duration by 15% from visitors originating from research and academic sources.</li>
+                    <li data-key="metric2"><span class="font-bold">Stakeholder Satisfaction:</span> Obtaining positive feedback from deans and center directors regarding the clarity of information and the ease with which international partners can access cooperation details.</li>
+                </ul>
+            </section>
+
+            <!-- 7. Next Steps and Launch -->
+            <section class="p-6 bg-[var(--color-accent)]/10 border border-[var(--color-accent)]/50 rounded-xl shadow-lg">
+                <h2 class="main-heading border-none text-xl text-[var(--color-primary)]" data-key="section7Title">7. Next Steps and Launch</h2>
+                <p class="mt-4 text-gray-700 font-medium" data-key="section7Intro">To initiate immediate commencement and ensure adherence to the 14-day timeframe, please consider the following administrative actions:</p>
+                <ul class="mt-4 space-y-3 custom-list list-none pl-0 text-base font-bold text-[var(--color-primary)]">
+                    <li class="p-2 bg-[var(--color-accent)]/20 rounded-lg" data-key="step1">Approval to Commence: Granting immediate authority to start Phase 1 (Discovery and Planning).</li>
+                    <li class="p-2 bg-[var(--color-accent)]/20 rounded-lg" data-key="step2">Issuing Formal Directives: Officially notifying all deanships and relevant parties of the urgent need to provide necessary data and content, in accordance with the requirements of Clause 4.3.1 and within the mandatory 48-hour deadline.</li>
+                    <li class="p-2 bg-[var(--color-accent)]/20 rounded-lg" data-key="step3">Infrastructure Support: Formally notifying the Computer Center to provide the necessary cooperation and support to prepare the technical working environment and ensure smooth execution in line with the timeline.</li>
+                </ul>
+            </section>
+
+        </main>
+
+        <!-- Footer -->
+        <footer class="bg-gray-100 text-center p-4 text-sm text-gray-500 rounded-b-xl border-t border-gray-200">
+            <span data-key="footer">&copy; 2025 University College of Applied Sciences (UCAS) - Internal Digital Proposal.</span>
+        </footer>
+    </div>
+
+    <script>
+        const translations = {
+            en: {
+                docTitle: "Strategic Digital Initiative",
+                docSubtitle: "Enhancing the University College of Applied Sciences (UCAS) E-Portal to Support International Partnerships",
+                docDetails: "Document Details",
+                docTitleLabel: "Document Title:",
+                docTitleFull: "UCAS English Website Improvement Project Proposal",
+                date: "Date:",
+                dateValue: "October 2025",
+                projectID: "Project ID:",
+                preparingEntity: "Preparing Entity:",
+                entityValue: "Deanship of Engineering and Smart Systems",
+                assignedEngineer: "Assigned Engineer:",
+                engineerName: "Eng. Mahmoud Khalil",
+                supervision: "Supervision:",
+                supervisorName: "Dr. Mohammed Mattar",
+                section1Title: "1. Executive Summary",
+                section11Title: "1.1. Project Overview",
+                section11Text: 'This proposal represents a crucial strategic investment to support the University College of Applied Sciences (UCAS)\'s position as an "Innovation Leader." It directly aims to enhance **International and Institutional Partnerships (Academic & Research Partnerships)** by updating and developing our English electronic platform (<a href="en.ucas.edu.ps" class="text-[var(--color-primary)] hover:underline">en.ucas.edu.ps</a>). The project will standardize the User Experience (UX/UI) across 11 main sections, ranging from Academic Deanships to Research Centers, achieving maximum **professionalism** and **high technical quality** to serve the international cooperation agenda. Leveraging the internal efficiency of the Deanship of Engineering and Smart Systems, this project is expected to be fully completed within an **accelerated timeframe of only 14 days**.',
+                section2Title: "2. Problem Statement and Challenge",
+                section2Intro: "Despite our academic distinction, our current English interface poses a risk to our ability to attract international partners and presents a challenge to joint collaboration:",
+                problem1: "**Weak Global Institutional Appearance:** The current design does not reflect UCAS's standing as a credible international academic or research partner, hindering the building of relationships with other universities.",
+                problem2: "**Inconsistent User Experience:** There is a disparity in formatting and content across the 11 sections, making it difficult for international academics and institutions to quickly access details of our research programs and academic plans.",
+                problem3: "**Lack of Clarity in Competency Display:** Academic staff profiles and expertise are not displayed professionally, which would otherwise facilitate cooperation opportunities and leverage their expertise for other universities.",
+                section3Title: "3. Project Scope: The Eleven Target Sections",
+                section3Intro: "The project includes comprehensive redesign and development of 11 main sections of the English website, focusing on serving international relations:",
+                tableID: "ID",
+                tableSection: "Section/Deanship",
+                tableFocus: "Focus Value",
+                scope1Title: "Academic Departments (7 Deanships)",
+                scope1Value: "Clearly outlining program pathways, **academic development plans**, and faculty profiles.",
+                scope2Title: "Scientific Research",
+                scope2Value: "Showcasing current projects, **areas of joint interest with international partners**, and funding opportunities.",
+                scope3Title: "Units & Centers",
+                scope3Value: "Clarifying the mission of each unit, **its potential for international cooperation**, and contact information.",
+                scope4Title: "Public Relations",
+                scope4Value: "News archive, events calendar, **and news on established partnerships**.",
+                scope5Title: "Contact Us",
+                scope5Value: "Improved contact forms, department directories, and location maps.",
+                section4Title: "4. Proposed Solution and Strategic Pillars",
+                section4Intro: "The project will be executed based on three strategic pillars to ensure a final product that serves institutional goals:",
+                pillar1Title: "4.1. Pillar One: Technical Quality and Professionalism (Engineering Excellence) on WordPress Platform",
+                pillar1Intro: "I guarantee that this pillar will receive the highest priority, focusing on the structural architecture of the WordPress platform:",
+                pillar1List1: '<span class="font-bold">Theme Engineering:</span> Building all modifications and customizations through a **dedicated Child Theme**. This ensures that no code or design changes are lost when the main WordPress theme is updated, guaranteeing long-term site sustainability.',
+                pillar1List2: '<span class="font-bold">Future Scalability:</span> Designing the core WordPress architecture to accommodate future content growth (increasing the number of sections or programs) without requiring comprehensive re-engineering.',
+                pillar1List3: '<span class="font-bold">Performance and Caching Optimization:</span> Implementing techniques to improve WordPress page loading speed, including asset compression, database query optimization, and activating caching best practices.',
+                pillar1List4: '<span class="font-bold">Dynamic Content Structure:</span> Utilizing Custom Post Types (CPTs) and custom fields to organize data for deanships, programs, and staff profiles in an organized and segregated manner.',
+                pillar1List5: '<span class="font-bold">Technical Compliance:</span> Building interfaces using the latest programming standards to ensure sustainability and ease of future maintenance.',
+                pillar2Title: "4.2. Pillar Two: Design and User Experience (UX/UI Modernization)",
+                pillar2List1: '<span class="font-bold">Unified and Responsive Design:</span> Adopting a **"Mobile-First" approach** to ensure a seamless experience on all devices.',
+                pillar2List2: '<span class="font-bold">Integrated Visual Identity:</span> Unifying fonts, colors, and data presentation style across all 11 sections.',
+                pillar2List3: '<span class="font-bold">Accessibility (WCAG Compliance):</span> Ensuring that pages comply with Web Content Accessibility Guidelines to serve users with disabilities.',
+                pillar3Title: "4.3. Pillar Three: Strategic Content, Clarity, and Human Capital for International Cooperation",
+                reqTitle: "4.3.1. Content Completion and Data Acquisition Requirement",
+                reqText: 'A critical requirement for the full completion of this project and populating all necessary pages (11 sections) is **obtaining sufficient and reliable input and content**. Therefore, effective and direct communication with deanships and college specialists to provide detailed information for each page, including goals, programs, and staff profiles, is an essential condition for adhering to the specified timeframe (**14 days**). **To this end, a Standardized Template will be sent to each deanship to populate the required data for its page, with a strict Hard Deadline of no more than 48 hours to ensure work flow continuity and adherence to the 14-day schedule.**',
+                pillar3List1: '<span class="font-bold">Content Refinement:</span> Reviewing all English texts to ensure accuracy, clarity, and suitability for the audience of **partner universities and research institutions**.',
+                pillar3List2: '<span class="font-bold">Highlighting Human Capital for Cooperation:</span> **Coordinating with deanships to compile profiles of distinguished faculty and staff, including a summary of their research specialization and any previous international experience, to facilitate cooperation and leverage their expertise in developing joint academic plans.**',
+                pillar3List3: '<span class="font-bold">Search Engine Optimization (SEO):</span> Implementing SEO best practices to increase UCAS\'s visibility in international academic and research search results.',
+                section5Title: "5. Timeline and Phases",
+                section5Intro: "The timeline has been set based on the efficiency of **developing one page per day** to meet strategic goals at maximum speed:",
+                tablePhase: "Phase",
+                tableDescription: "Description",
+                tableDuration: "Duration (Days)",
+                tableDeliverables: "Key Deliverables",
+                phase1: "1. Discovery and Planning",
+                phase1Desc: "Gathering final requirements, content auditing, and structure design.",
+                phase1Dur: "2 Days",
+                phase1Del: "Requirements Document, Design Prototypes.",
+                phase2: "2. Technical Development",
+                phase2Desc: "**Coding 11 sections (1 page/day)**, followed by quality testing and technical verification.",
+                phase2Dur: "7 Days",
+                phase2Del: "Ready templates for 11 sections, Initial Technical Verification Report.",
+                phase3: "3. Content Migration and QA",
+                phase3Desc: "Inputting final English content, comprehensive functional testing.",
+                phase3Dur: "3 Days",
+                phase3Del: "Quality Assurance Report, Technical Audit Report.",
+                phase4: "4. Launch and Deployment",
+                phase4Desc: "Final approval, deployment to the production environment, and post-launch monitoring.",
+                phase4Dur: "2 Days",
+                phase4Del: "Official site launch, Performance Monitoring Report.",
+                total: "Total",
+                totalDur: "14 Days",
+                totalDel: "Fully Enhanced en.ucas.edu.ps Platform",
+                section6Title: "6. Success Metrics",
+                section6Intro: "The success of this project will be measured 90 days after launch based on the following metrics:",
+                metric1: '<span class="font-bold">Institutional User Engagement:</span> Increase in the Average Session Duration by 15% from visitors originating from research and academic sources.',
+                metric2: '<span class="font-bold">Stakeholder Satisfaction:</span> Obtaining positive feedback from deans and center directors regarding the clarity of information and the ease with which international partners can access cooperation details.',
+                section7Title: "7. Next Steps and Launch",
+                section7Intro: "To initiate immediate commencement and ensure adherence to the 14-day timeframe, please consider the following administrative actions:",
+                step1: "Approval to Commence: Granting immediate authority to start Phase 1 (Discovery and Planning).",
+                step2: "Issuing Formal Directives: Officially notifying all deanships and relevant parties of the urgent need to provide necessary data and content, in accordance with the requirements of Clause 4.3.1 and within the mandatory 48-hour deadline.",
+                step3: "Infrastructure Support: Formally notifying the Computer Center to provide the necessary cooperation and support to prepare the technical working environment and ensure smooth execution in line with the timeline.",
+                footer: "&copy; 2025 University College of Applied Sciences (UCAS) - Internal Digital Proposal.",
+                switchBtn: "التحويل إلى العربية"
+            },
+            ar: {
+                docTitle: "المبادرة الرقمية الاستراتيجية",
+                docSubtitle: "تعزيز البوابة الإلكترونية للكلية الجامعية للعلوم التطبيقية (UCAS) لدعم الشراكات الدولية",
+                docDetails: "تفاصيل الوثيقة",
+                docTitleLabel: "عنوان الوثيقة:",
+                docTitleFull: "مقترح مشروع تحسين موقع الكلية الجامعية باللغة الإنجليزية",
+                date: "التاريخ:",
+                dateValue: "أكتوبر 2025",
+                projectID: "هوية المشروع:",
+                preparingEntity: "الجهة المُعدّة:",
+                entityValue: "عمادة الهندسة والنظم الذكية",
+                assignedEngineer: "المهندس المُكلف:",
+                engineerName: "م.محمود الشيخ خليل",
+                supervision: "الإشراف:",
+                supervisorName: "د.محمد مطر",
+                section1Title: "1. الملخص التنفيذي",
+                section11Title: "1.1. نظرة عامة على المشروع",
+                section11Text: 'يمثل هذا المقترح استثمارًا استراتيجيًا حاسمًا لدعم موقع الكلية الجامعية للعلوم التطبيقية (UCAS) كـ "قائد للابتكار". ويهدف بشكل مباشر إلى تعزيز **الشراكات الدولية والمؤسسية (الأكاديمية والبحثية)** عبر تطوير وتحديث منصتنا الإلكترونية باللغة الإنجليزية (<a href="en.ucas.edu.ps" class="text-[var(--color-primary)] hover:underline">en.ucas.edu.ps</a>). سيعمل المشروع على توحيد تجربة المستخدم (UX/UI) عبر 11 قسمًا رئيسيًا، تتراوح بين العمادات الأكاديمية والمراكز البحثية، لتحقيق أقصى درجات **الاحترافية** و**الجودة التقنية العالية** لخدمة أجندة التعاون الدولي. ومن المتوقع، بالاستفادة من الكفاءة الداخلية لعمادة الهندسة والنظم الذكية، أن يكتمل هذا المشروع بالكامل في **إطار زمني مُسرّع لا يتجاوز 14 يومًا**.',
+                section2Title: "2. بيان المشكلة والتحدي",
+                section2Intro: "على الرغم من تميزنا الأكاديمي، فإن واجهتنا الإنجليزية الحالية تشكل خطراً على قدرتنا على جذب الشركاء الدوليين وتطرح تحدياً للتعاون المشترك:",
+                problem1: "**مظهر مؤسسي عالمي ضعيف:** التصميم الحالي لا يعكس مكانة الكلية كشريك أكاديمي أو بحثي دولي موثوق، مما يعيق بناء العلاقات مع الجامعات الأخرى.",
+                problem2: "**تجربة مستخدم غير متسقة:** يوجد تباين في التنسيق والمحتوى عبر الأقسام الـ 11، مما يصعّب على الأكاديميين والمؤسسات الدولية الوصول السريع لتفاصيل برامجنا البحثية والخطط الأكاديمية.",
+                problem3: "**نقص وضوح عرض الكفاءات:** لا يتم عرض ملفات وخبرات الكادر الأكاديمي بمهنية، وهو ما من شأنه أن يسهل فرص التعاون واستثمار خبراتهم لدى الجامعات الأخرى.",
+                section3Title: "3. نطاق المشروع: الأقسام الأحد عشر المستهدفة",
+                section3Intro: "يشمل المشروع إعادة تصميم وتطوير شاملة لـ 11 قسمًا رئيسيًا في الموقع الإنجليزي، بالتركيز على خدمة العلاقات الدولية:",
+                tableID: "الرقم",
+                tableSection: "القسم/العمادة",
+                tableFocus: "القيمة المُركّزة",
+                scope1Title: "الأقسام الأكاديمية (7 عمادات)",
+                scope1Value: "توضيح مسارات البرامج، **خطط التطوير الأكاديمي**، وملفات أعضاء هيئة التدريس.",
+                scope2Title: "البحث العلمي",
+                scope2Value: "عرض المشاريع الحالية، **مجالات الاهتمام المشترك مع الشركاء الدوليين**، وفرص التمويل.",
+                scope3Title: "الوحدات والمراكز",
+                scope3Value: "توضيح مهمة كل وحدة، **إمكاناتها للتعاون الدولي**، ومعلومات الاتصال.",
+                scope4Title: "العلاقات العامة",
+                scope4Value: "أرشيف الأخبار، تقويم الفعاليات، **وأخبار الشراكات القائمة**.",
+                scope5Title: "اتصل بنا",
+                scope5Value: "نماذج اتصال مُحسّنة، دلائل الأقسام، وخرائط المواقع.",
+                section4Title: "4. الحل المقترح والأركان الاستراتيجية",
+                section4Intro: "سيتم تنفيذ المشروع بناءً على ثلاثة أركان استراتيجية لضمان منتج نهائي يخدم الأهداف المؤسسية:",
+                pillar1Title: "4.1. الركن الأول: الجودة التقنية والاحترافية (التميز الهندسي) على منصة ووردبريس",
+                pillar1Intro: "أضمن أن يحظى هذا الركن بالأولوية القصوى، بالتركيز على البنية الهيكلية لمنصة ووردبريس:",
+                pillar1List1: '<span class="font-bold">هندسة القالب (Theme):</span> بناء جميع التعديلات والتخصيصات عبر **"قالب فرعي مخصص (Child Theme)"**. هذا يضمن عدم فقدان أي تعديلات كودية أو تصميمية عند تحديث القالب الرئيسي لووردبريس، ما يضمن استدامة الموقع على المدى الطويل.',
+                pillar1List2: '<span class="font-bold">قابلية التوسع المستقبلي:</span> تصميم هيكل ووردبريس الأساسي ليخدم نمو المحتوى المستقبلي (زيادة عدد الأقسام أو البرامج) دون الحاجة لإعادة هندسة شاملة.',
+                pillar1List3: '<span class="font-bold">تحسين الأداء والتخزين المؤقت:</span> تطبيق تقنيات لتحسين سرعة تحميل صفحات ووردبريس، بما في ذلك ضغط الأصول، تحسين استعلامات قاعدة البيانات، وتفعيل أفضل ممارسات التخزين المؤقت.',
+                pillar1List4: '<span class="font-bold">هيكل المحتوى الديناميكي:</span> استخدام أنواع المنشورات المخصصة (CPTs) والحقول المخصصة لتنظيم بيانات العمادات والبرامج وملفات الكادر بشكل مُنظم ومُجزء.',
+                pillar1List5: '<span class="font-bold">الامتثال التقني:</span> بناء الواجهات باستخدام أحدث المعايير البرمجية لضمان الاستدامة وسهولة الصيانة المستقبلية.',
+                pillar2Title: "4.2. الركن الثاني: التصميم وتجربة المستخدم (تحديث UX/UI)",
+                pillar2List1: '<span class="font-bold">تصميم موحد ومتجاوب:</span> تبني منهجية **"الهاتف المحمول أولاً (Mobile-First)"** لضمان تجربة سلسة على جميع الأجهزة.',
+                pillar2List2: '<span class="font-bold">هوية بصرية متكاملة:</span> توحيد الخطوط والألوان وأسلوب عرض البيانات عبر الأقسام الـ 11 جميعها.',
+                pillar2List3: '<span class="font-bold">إمكانية الوصول (WCAG Compliance):</span> ضمان توافق الصفحات مع إرشادات الوصول لمحتوى الويب لخدمة المستخدمين ذوي الإعاقة.',
+                pillar3Title: "4.3. الركن الثالث: المحتوى الاستراتيجي والوضوح ورأس المال البشري للتعاون الدولي",
+                reqTitle: "4.3.1. متطلب إنجاز المحتوى والحصول على البيانات",
+                reqText: 'إن المتطلب الحاسم للإنجاز الكامل لهذا المشروع وتعبئة جميع الصفحات الضرورية (11 قسمًا) هو **الحصول على مدخلات ومحتوى موثوق وكافٍ**. وعليه، يُعتبر التواصل الفعال والمباشر مع العمادات ومتخصصي الكلية لتقديم معلومات مفصلة لكل صفحة، بما في ذلك الأهداف والبرامج وملفات الكادر، شرطًا أساسيًا للالتزام بالإطار الزمني المحدد (**14 يومًا**). **ولهذا الغرض، سيتم إرسال نموذج موحد (Standardized Template) لكل عمادة لتعبئة البيانات المطلوبة لصفحتها، مع مهلة إدارية صارمة لا تتجاوز 48 ساعة لضمان استمرارية سير العمل والالتزام بجدول الـ 14 يومًا.**',
+                pillar3List1: '<span class="font-bold">تنقيح المحتوى:</span> مراجعة جميع النصوص الإنجليزية لضمان دقتها ووضوحها وملاءمتها لجمهور **الجامعات الشريكة والمؤسسات البحثية**.',
+                pillar3List2: '<span class="font-bold">إبراز رأس المال البشري للتعاون:</span> **التنسيق مع العمادات لتجميع ملفات للكادر الأكاديمي المتميز، مع ملخص لتخصصهم البحثي وأي خبرة دولية سابقة، لتسهيل التعاون واستثمار خبراتهم في تطوير الخطط الأكاديمية المشتركة.**',
+                pillar3List3: '<span class="font-bold">تحسين محركات البحث (SEO):</span> تطبيق أفضل ممارسات SEO لزيادة ظهور UCAS في نتائج البحث الأكاديمية والبحثية الدولية.',
+                section5Title: "5. الجدول الزمني والمراحل",
+                section5Intro: "تم تحديد الجدول الزمني بناءً على كفاءة **تطوير صفحة واحدة يوميًا** للوفاء بالأهداف الاستراتيجية بأقصى سرعة:",
+                tablePhase: "المرحلة",
+                tableDescription: "الوصف",
+                tableDuration: "المدة (يوم)",
+                tableDeliverables: "النتائج الرئيسية",
+                phase1: "1. الاكتشاف والتخطيط",
+                phase1Desc: "جمع المتطلبات النهائية، تدقيق المحتوى، وتصميم الهيكل.",
+                phase1Dur: "يومان",
+                phase1Del: "وثيقة المتطلبات، نماذج التصميم الأولية.",
+                phase2: "2. التطوير التقني",
+                phase2Desc: "**تكويد 11 قسمًا (بمعدل صفحة/يوم)**، يتبعها اختبار الجودة والتحقق التقني.",
+                phase2Dur: "7 أيام",
+                phase2Del: "قوالب جاهزة لـ 11 قسمًا، تقرير التحقق التقني الأولي.",
+                phase3: "3. ترحيل المحتوى وضمان الجودة",
+                phase3Desc: "إدخال المحتوى الإنجليزي النهائي، اختبار وظيفي شامل.",
+                phase3Dur: "3 أيام",
+                phase3Del: "تقرير ضمان الجودة، تقرير التدقيق التقني.",
+                phase4: "4. الإطلاق والنشر",
+                phase4Desc: "الاعتماد النهائي، النشر على بيئة الإنتاج، والمراقبة ما بعد الإطلاق.",
+                phase4Dur: "يومان",
+                phase4Del: "الإطلاق الرسمي للموقع، تقرير مراقبة الأداء.",
+                total: "الإجمالي",
+                totalDur: "14 يومًا",
+                totalDel: "منصة en.ucas.edu.ps مُعزّزة بالكامل",
+                section6Title: "6. مقاييس النجاح",
+                section6Intro: "سيتم قياس نجاح المشروع بعد 90 يومًا من الإطلاق بناءً على المقاييس التالية:",
+                metric1: '<span class="font-bold">تفاعل المستخدم المؤسسي:</span> زيادة في متوسط مدة الجلسة بـ 15% من الزوار القادمين من مصادر بحثية وأكاديمية.',
+                metric2: '<span class="font-bold">رضا أصحاب المصلحة:</span> الحصول على تغذية راجعة إيجابية من العمداء ومديري المراكز بخصوص وضوح المعلومات وسهولة وصول الشركاء الدوليين لتفاصيل التعاون.',
+                section7Title: "7. الخطوات التالية والإطلاق",
+                section7Intro: "للبدء الفوري وضمان الالتزام بالإطار الزمني للـ 14 يومًا، يرجى النظر في الإجراءات الإدارية التالية:",
+                step1: "الموافقة على البدء: منح الصلاحية الفورية لبدء المرحلة الأولى (الاكتشاف والتخطيط).",
+                step2: "إصدار توجيهات رسمية: إخطار جميع العمادات والجهات ذات الصلة رسميًا بضرورة الإسراع في تقديم البيانات والمحتوى اللازم، وفقاً لمتطلبات البند 4.3.1 وخلال المهلة الإلزامية 48 ساعة.",
+                step3: "دعم البنية التحتية: إخطار مركز الحاسوب رسميًا لتقديم التعاون والدعم اللازم لإعداد بيئة العمل التقنية وضمان سير التنفيذ وفق الجدول الزمني.",
+                footer: "&copy; 2025 الكلية الجامعية للعلوم التطبيقية (UCAS) - مقترح رقمي داخلي.",
+                switchBtn: "Switch to English"
+            }
+        };
+
+        let currentLang = 'en';
+
+        // Function to handle class adjustments for LTR/RTL layout
+        function adjustLayout(lang) {
+            const body = document.body;
+            const html = document.documentElement;
+
+            if (lang === 'ar') {
+                html.setAttribute('dir', 'rtl');
+                html.setAttribute('lang', 'ar');
+                body.classList.remove('ltr-styles');
+                body.classList.add('rtl-styles');
+                
+                // Tailwind utility adjustments for RTL
+                document.querySelectorAll('.text-left').forEach(el => {
+                    el.classList.remove('text-left');
+                    el.classList.add('text-right');
+                });
+                
+                // Adjust button position for RTL
+                const btn = document.getElementById('lang-toggle-btn');
+                btn.classList.remove('right-4');
+                btn.classList.add('left-4');
+
+            } else {
+                html.setAttribute('dir', 'ltr');
+                html.setAttribute('lang', 'en');
+                body.classList.remove('rtl-styles');
+                body.classList.add('ltr-styles');
+                
+                // Tailwind utility adjustments for LTR
+                document.querySelectorAll('.text-right').forEach(el => {
+                    el.classList.remove('text-right');
+                    el.classList.add('text-left');
+                });
+                
+                // Adjust button position for LTR
+                const btn = document.getElementById('lang-toggle-btn');
+                btn.classList.remove('left-4');
+                btn.classList.add('right-4');
+            }
+        }
+
+        // Main translation function
+        function translatePage(lang) {
+            const t = translations[lang];
+            
+            // 1. Update Title and Button
+            document.getElementById('doc-title-main').textContent = t.docTitle;
+            document.getElementById('lang-toggle-btn').textContent = t.switchBtn;
+
+            // 2. Update all elements with data-key attribute
+            document.querySelectorAll('[data-key]').forEach(el => {
+                const key = el.getAttribute('data-key');
+                if (t[key]) {
+                    // Use innerHTML to preserve nested formatting (like strong tags and links)
+                    el.innerHTML = t[key];
+                }
+            });
+            
+            // 3. Adjust Layout
+            adjustLayout(lang);
+            currentLang = lang;
+        }
+
+        // Toggle function called by the button
+        function switchLanguage() {
+            const newLang = currentLang === 'en' ? 'ar' : 'en';
+            translatePage(newLang);
+        }
+
+        // Initialize the page on load
+        window.onload = function() {
+            // Set initial language to English (which is the default in the HTML structure)
+            translatePage('en'); 
+            document.body.classList.add('ltr-styles');
+        };
+    </script>
+</body>
+</html>
